@@ -12,15 +12,9 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug",
-<<<<<<< HEAD
-            "executable": "c:/git/UAV_ondergang/.pio/build/uno/firmware.elf",
-            "projectEnvName": "uno",
-            "toolchainBinDir": "C:/Users/jortl/.platformio/packages/toolchain-atmelavr/bin",
-=======
             "executable": "C:/Users/niels/Documents/UAV_git/UAV_ondergang/.pio/build/uno/firmware.elf",
             "projectEnvName": "uno",
             "toolchainBinDir": "C:/Users/niels/.platformio/packages/toolchain-atmelavr/bin",
->>>>>>> e1c0e71580178b99c6e0aa76b0ba10f29bb27563
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": {
                 "type": "PlatformIO",
@@ -31,30 +25,18 @@
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (skip Pre-Debug)",
-<<<<<<< HEAD
-            "executable": "c:/git/UAV_ondergang/.pio/build/uno/firmware.elf",
-            "projectEnvName": "uno",
-            "toolchainBinDir": "C:/Users/jortl/.platformio/packages/toolchain-atmelavr/bin",
-=======
             "executable": "C:/Users/niels/Documents/UAV_git/UAV_ondergang/.pio/build/uno/firmware.elf",
             "projectEnvName": "uno",
             "toolchainBinDir": "C:/Users/niels/.platformio/packages/toolchain-atmelavr/bin",
->>>>>>> e1c0e71580178b99c6e0aa76b0ba10f29bb27563
             "internalConsoleOptions": "openOnSessionStart"
         },
         {
             "type": "platformio-debug",
             "request": "launch",
             "name": "PIO Debug (without uploading)",
-<<<<<<< HEAD
-            "executable": "c:/git/UAV_ondergang/.pio/build/uno/firmware.elf",
-            "projectEnvName": "uno",
-            "toolchainBinDir": "C:/Users/jortl/.platformio/packages/toolchain-atmelavr/bin",
-=======
             "executable": "C:/Users/niels/Documents/UAV_git/UAV_ondergang/.pio/build/uno/firmware.elf",
             "projectEnvName": "uno",
             "toolchainBinDir": "C:/Users/niels/.platformio/packages/toolchain-atmelavr/bin",
->>>>>>> e1c0e71580178b99c6e0aa76b0ba10f29bb27563
             "internalConsoleOptions": "openOnSessionStart",
             "loadMode": "manual"
         }
