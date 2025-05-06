@@ -10,3 +10,5 @@ void loop() {
 void test(){
 //test ding van mij
 }
+
+void test_j(){}
