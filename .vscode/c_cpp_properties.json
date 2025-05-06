@@ -8,6 +8,7 @@
         {
             "name": "PlatformIO",
             "includePath": [
+<<<<<<< HEAD
                 "c:/git/UAV_ondergang/include",
                 "c:/git/UAV_ondergang/src",
                 "C:/Users/jortl/.platformio/packages/framework-arduino-avr/cores/arduino",
@@ -17,11 +18,23 @@
                 "C:/Users/jortl/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/jortl/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                 "C:/Users/jortl/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+=======
+                "C:/Users/niels/Documents/UAV_git/UAV_ondergang/include",
+                "C:/Users/niels/Documents/UAV_git/UAV_ondergang/src",
+                "C:/Users/niels/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/niels/.platformio/packages/framework-arduino-avr/variants/standard",
+                "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+>>>>>>> e1c0e71580178b99c6e0aa76b0ba10f29bb27563
                 ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
+<<<<<<< HEAD
                     "c:/git/UAV_ondergang/include",
                     "c:/git/UAV_ondergang/src",
                     "C:/Users/jortl/.platformio/packages/framework-arduino-avr/cores/arduino",
@@ -31,6 +44,17 @@
                     "C:/Users/jortl/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/jortl/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                     "C:/Users/jortl/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+=======
+                    "C:/Users/niels/Documents/UAV_git/UAV_ondergang/include",
+                    "C:/Users/niels/Documents/UAV_git/UAV_ondergang/src",
+                    "C:/Users/niels/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/niels/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/niels/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+>>>>>>> e1c0e71580178b99c6e0aa76b0ba10f29bb27563
                     ""
                 ]
             },
@@ -45,7 +69,11 @@
             ],
             "cStandard": "gnu11",
             "cppStandard": "gnu++11",
+<<<<<<< HEAD
             "compilerPath": "C:/Users/jortl/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+=======
+            "compilerPath": "C:/Users/niels/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+>>>>>>> e1c0e71580178b99c6e0aa76b0ba10f29bb27563
             "compilerArgs": [
                 "-mmcu=atmega328p",
                 ""

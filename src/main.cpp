@@ -6,3 +6,7 @@ void setup() {
 void loop() {
 // write your code here
 }
+
+void test(){
+//test ding van mij
+}
