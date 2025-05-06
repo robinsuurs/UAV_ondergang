@@ -1,12 +1,10 @@
 #include <Arduino.h>
 void setup() {
-// write your initialization code here
+Serial.begin(9600);
+Serial.println("Hello World");
+Serial.println("Dit is een test lijn");
 }
 
 void loop() {
 // write your code here
-}
-
-void test(){
-//test ding van mij
 }
