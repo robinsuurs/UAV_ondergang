@@ -7,7 +7,6 @@ Serial.println("Dit is een test lijn");
 
 void loop() {
 // write your code here
-<<<<<<< HEAD
 }
 
 void test(){
@@ -15,6 +14,3 @@ void test(){
 }
 
 void test_j(){}
-=======
-}
->>>>>>> e9029efab3504339b34787eb5a77a6ea905a8bb3
