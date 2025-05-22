@@ -1,12 +1,14 @@
 #include <Arduino.h>
+
 void setup() {
-// write your initialization code here
+    pinMode(25, INPUT_PULLUP);
+    pinMode(26, OUTPUT);
 }
 
 void loop() {
-// write your code here
-}
-
-void test(){
-//test ding van mij
+    if (digitalRead(25)) {
+        digitalWrite(26, HIGH);
+    } else {
+        digitalWrite(26, LOW);
+    }
 }
