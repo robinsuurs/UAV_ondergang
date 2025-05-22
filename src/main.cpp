@@ -2,13 +2,13 @@
 
 void setup() {
     pinMode(25, INPUT_PULLUP);
-    pinMode(26, OUTPUT);
+    pinMode(2, OUTPUT);
 }
 
 void loop() {
     if (digitalRead(25)) {
-        digitalWrite(26, HIGH);
+        digitalWrite(2, HIGH);
     } else {
-        digitalWrite(26, LOW);
+        digitalWrite(2, LOW);
     }
 }
