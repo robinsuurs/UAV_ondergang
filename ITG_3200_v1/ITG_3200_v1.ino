@@ -19,8 +19,8 @@ float scaleFactor = 14.375;
 float biasX = 0, biasY = 0, biasZ = 0;
 float angleX = 0, angleY = 0, angleZ = 0;
 unsigned long lastTime = 0;
-void setup()
-{
+
+void setup(){
   Serial.begin(9600);
   Wire.begin();
   char id=0;
@@ -45,45 +45,58 @@ void setup()
   biasX = sumX / float(calSamples);
   biasY = sumY / float(calSamples);
   biasZ = sumZ / float(calSamples);
-  Serial.println("Calibration done!");
-}
+  Serial.println("Calibration done!");}
 
-float applyDeadzone(float value, float threshold) {
-  return (abs(value) < threshold) ? 0.0 : value;
-}
 
-void loop()
-{
+void loop(){
+  // Tijd tussen metingen
+  unsigned long currentTime = millis();
+  float dt = (currentTime - lastTime) / 1000.0;  // in seconden
+  lastTime = currentTime;
+
+  //ADC values
   int rawX = readX();
   int rawY = readY();
   int rawZ = readZ();
 
+  //Speling eruit(0.2)
   float x_dps = applyDeadzone((rawX - biasX) / scaleFactor, 0.2);
   float y_dps = applyDeadzone((rawY - biasY) / scaleFactor, 0.2);
   float z_dps = applyDeadzone((rawZ - biasZ) / scaleFactor, 0.2);
 
+  //Integreerfunctie (graden/s naar graden)
+  integrateGyro(x_dps, y_dps, z_dps, dt, angleX, angleY, angleZ);
 
-  Serial.print("X: "); Serial.print(x_dps); 
+  //Waardes printen in graden/s
+  /*Serial.print("X: "); Serial.print(x_dps); 
   Serial.print(" °/s, Y: "); Serial.print(y_dps); 
-  Serial.print(" °/s, Z: "); Serial.println(z_dps);
+  Serial.print(" °/s, Z: "); Serial.println(z_dps);*/
+  //Waardes print in graden
+  Serial.print("Angle X: "); Serial.print(angleX); Serial.print(" °, ");
+  Serial.print("Angle Y: "); Serial.print(angleY); Serial.print(" °, ");
+  Serial.print("Angle Z: "); Serial.print(angleZ); Serial.println(" °, ");
+
   delay(100);
-}
-void itgWrite(char address, char registerAddress, char data)
-{
+  if (Serial.available() > 0 && Serial.read() == 'r') {
+  angleX = angleY = angleZ = 0;
+  Serial.println("Hoeken gereset!");}}
+
+float applyDeadzone(float value, float threshold) {
+  return (abs(value) < threshold) ? 0.0 : value;}
+
+void itgWrite(char address, char registerAddress, char data){
   Wire.beginTransmission(address);
   Wire.write(registerAddress);
   Wire.write(data);
-  Wire.endTransmission();
-}
+  Wire.endTransmission();}
+
 void integrateGyro(float x_dps, float y_dps, float z_dps, float dt, 
                    float &angleX, float &angleY, float &angleZ) {
   angleX += x_dps * dt;
   angleY += y_dps * dt;
-  angleZ += z_dps * dt;
-}
+  angleZ += z_dps * dt;}
 
-unsigned char itgRead(char address, char registerAddress)
-{
+unsigned char itgRead(char address, char registerAddress){
   unsigned char data=0;
 
   Wire.beginTransmission(address);
@@ -98,32 +111,25 @@ unsigned char itgRead(char address, char registerAddress)
     data = Wire.read();
   }
 
-  return data;
-}
+  return data;}
 
-int readX(void)
-{
+int readX(void){
   int data=0;
   data = itgRead(itgAddress, GYRO_XOUT_H)<<8;
   data |= itgRead(itgAddress, GYRO_XOUT_L);
 
-  return data;
-}
+  return data;}
 
-int readY(void)
-{
+int readY(void){
   int data=0;
   data = itgRead(itgAddress, GYRO_YOUT_H)<<8;
   data |= itgRead(itgAddress, GYRO_YOUT_L);
 
-  return data;
-}
+  return data;}
 
-int readZ(void)
-{
+int readZ(void){
   int data=0;
   data = itgRead(itgAddress, GYRO_ZOUT_H)<<8;
   data |= itgRead(itgAddress, GYRO_ZOUT_L);
 
-  return data;
-}
+  return data;}
