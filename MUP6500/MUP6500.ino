@@ -1,29 +1,6 @@
-/***************************************************************************
-* Example sketch for the MPU6500_WE library
-*
-* This sketch shows how to get acceleration, gyroscocope and temperature 
-* data from the MPU6500. In essence, the difference to the MPU9250 is the
-* missing magnetometer. The shall only show how to "translate" all other 
-* MPU9250 example sketches for use of the MPU6500
-* 
-* For further information visit my blog:
-*
-* https://wolles-elektronikkiste.de/mpu9250-9-achsen-sensormodul-teil-1  (German)
-* https://wolles-elektronikkiste.de/en/mpu9250-9-axis-sensor-module-part-1  (English)
-* 
-***************************************************************************/
-
 #include <MPU6500_WE.h>
 #include <Wire.h>
 #define MPU6500_ADDR 0x68
-
-/* There are several ways to create your MPU6500 object:
- * MPU6500_WE myMPU6500 = MPU6500_WE()              -> uses Wire / I2C Address = 0x68
- * MPU6500_WE myMPU6500 = MPU6500_WE(MPU6500_ADDR)  -> uses Wire / MPU6500_ADDR
- * MPU6500_WE myMPU6500 = MPU6500_WE(&wire2)        -> uses the TwoWire object wire2 / MPU6500_ADDR
- * MPU6500_WE myMPU6500 = MPU6500_WE(&wire2, MPU6500_ADDR) -> all together
- * Successfully tested with two I2C busses on an ESP32
- */
 MPU6500_WE myMPU6500 = MPU6500_WE(MPU6500_ADDR);
 
 void setup() {
@@ -51,7 +28,8 @@ void setup() {
 
 void loop() {
   xyzFloat gValue = myMPU6500.getGValues();
-  xyzFloat gyr = myMPU6500.getGyrValues();
+  xyzFloat rawgyr = myMPU6500.getGyrValues();
+  xyzFloat gyr = filter(rawgyr);
   float temp = myMPU6500.getTemperature();
   float resultantG = myMPU6500.getResultantG(gValue);
   Serial.println("Gyroscope data in degrees/s: ");
@@ -64,4 +42,13 @@ void loop() {
   Serial.println(temp);
   Serial.println("********************************************");
   delay(1000);
+}
+
+xyzFloat filter(xyzFloat gyr){
+  xyzFloat adjustedgyr;
+  float threshold = 0.6;
+  adjustedgyr.x = (abs(gyr.x) < threshold)? 0.0 : gyr.x;
+  adjustedgyr.y = (abs(gyr.y) < threshold)? 0.0 : gyr.y;
+  adjustedgyr.z = (abs(gyr.z) < threshold)? 0.0 : gyr.z;
+  return adjustedgyr;
 }
