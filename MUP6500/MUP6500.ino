@@ -53,14 +53,10 @@ xyzFloat integrate(xyzFloat gyr){
   anglegyr.y += round(gyr.y * dt);
   anglegyr.z += round(gyr.z * dt);
   anglegyr.x = fmod(anglegyr.x + 180.0, 360.0);
-  if (anglegyr.x < 0) anglegyr.x += 360.0;
-  anglegyr.x -= 180.0;
-  anglegyr.y = fmod(anglegyr.y + 180.0, 360.0);
-  if (anglegyr.y < 0) anglegyr.y += 360.0;
-  anglegyr.y -= 180.0;
-  anglegyr.z = fmod(anglegyr.z + 180.0, 360.0);
-  if (anglegyr.z < 0) anglegyr.z += 360.0;
-  anglegyr.z -= 180.0;
+  // Reset naar 0 als hoek buiten bereik -360° tot +360°
+  if (anglegyr.x > 360.0 || anglegyr.x < -360.0) anglegyr.x = 0.0;
+  if (anglegyr.y > 360.0 || anglegyr.y < -360.0) anglegyr.y = 0.0;
+  if (anglegyr.z > 360.0 || anglegyr.z < -360.0) anglegyr.z = 0.0;
   return anglegyr;
 }
 void instellen(void){
@@ -88,7 +84,7 @@ void meten(void){
       xyzFloat gyr = filter(rawgyr);
       xyzFloat angle = integrate(rawgyr);
       float temp = myMPU6500.getTemperature();
-      Serial.println("Gyroscope data in degrees/s and degrees: ");
+      Serial.println("Gyroscope data in and degrees: ");
       Serial.print(angle.x);
       Serial.print("   ");
       Serial.print(angle.y);
